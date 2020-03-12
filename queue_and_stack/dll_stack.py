@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../doubly_linked_list')
+sys.path.append('/Users/dxtrlws/Lambda/Computer Science/03 Data Structures/Lectures/Data-Structures/doubly_linked_list/')
 from doubly_linked_list import DoublyLinkedList
 
 class Stack:
@@ -10,12 +10,13 @@ class Stack:
         self.storage = DoublyLinkedList()
 
     def push(self, value):
-        self.storage.add_to_head(value)
         self.size += 1
+        self.storage.add_to_tail(value)
 
     def pop(self):
-        self.storage.remove_from_head()
-        self.storage -= 1
+        self.size -= 1
+        value = self.storage.remove_from_tail()
+        return value
 
     def len(self):
         return self.size

@@ -42,9 +42,6 @@ class ListNode:
 the list's head and tail nodes."""
 
 
-def testing():
-    return "hello world"
-
 
 class DoublyLinkedList:
     def __init__(self, node=None):
@@ -149,4 +146,11 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        pass
+        current_val = self.head
+        max_val = current_val.value
+        while current_val is not None:
+            if current_val.value > max_val.value:
+                max_val = current_val.value
+            current_val = current_val.next
+        return max_val
+

@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../doubly_linked_list')
+sys.path.append('/Users/dxtrlws/Lambda/Computer Science/03 Data Structures/Lectures/Data-Structures/doubly_linked_list/')
 from doubly_linked_list import DoublyLinkedList
 
 
@@ -12,12 +12,12 @@ class Queue:
         self.storage = DoublyLinkedList()
 
     def enqueue(self, value):
-        self.storage.add_to_head(value)
         self.size += 1
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
-        self.storage.remove_from_tail()
         self.size -=1
+        self.storage.remove_from_head()
 
     def len(self):
         return self.size
