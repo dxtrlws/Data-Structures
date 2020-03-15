@@ -64,8 +64,11 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
+            # adding a new value, to existing list
+            # link new node with current head
             new_node.next = self.head
             self.head.prev = new_node
+            # update head
             self.head = new_node
 
     """Removes the List's current head node, making the
@@ -73,9 +76,27 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
 
     def remove_from_head(self):
-        value = self.head.value
-        self.delete(self.head)
-        return value
+
+        # if list is empty
+        if self.head is None and self.tail is None:
+            return
+        # if lis has only one elment
+        elif self.head == self.tail:
+            # unlink the node
+            value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        else:
+            # we have more than one lement
+            value = self.head.value
+            next_head = self.head.next
+            next_head.prev = None
+            self.head.next = None
+            self.head = next_head
+            self.length -= 1
+            return value
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -146,11 +167,11 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        current_val = self.head
-        max_val = current_val.value
-        while current_val is not None:
-            if current_val.value > max_val.value:
-                max_val = current_val.value
-            current_val = current_val.next
-        return max_val
-
+        # current_val = self.head
+        # max_val = current_val.value
+        # while current_val is not None:
+        #     if current_val.value > max_val.value:
+        #         max_val = current_val.value
+        #     current_val = current_val.next
+        # return max_val
+        pass
